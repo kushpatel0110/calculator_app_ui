@@ -1,0 +1,16 @@
+C:\Users\rocky\Documents\calculator_app_ui\CalculatorAppUI\obj\Debug\net10.0-windows\CalculatorAppUI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rocky\Documents\calculator_app_ui\CalculatorAppUI\obj\Debug\net10.0-windows\CalculatorAppUI.AssemblyInfoInputs.cache
+C:\Users\rocky\Documents\calculator_app_ui\CalculatorAppUI\obj\Debug\net10.0-windows\CalculatorAppUI.AssemblyInfo.cs
+C:\Users\rocky\Documents\calculator_app_ui\CalculatorAppUI\obj\Debug\net10.0-windows\CalculatorAppUI.csproj.CoreCompileInputs.cache
+C:\Users\rocky\Documents\calculator_app_ui\CalculatorAppUI\bin\Debug\net10.0-windows\CalculatorAppUI.exe
+C:\Users\rocky\Documents\calculator_app_ui\CalculatorAppUI\bin\Debug\net10.0-windows\CalculatorAppUI.deps.json
+C:\Users\rocky\Documents\calculator_app_ui\CalculatorAppUI\bin\Debug\net10.0-windows\CalculatorAppUI.runtimeconfig.json
+C:\Users\rocky\Documents\calculator_app_ui\CalculatorAppUI\bin\Debug\net10.0-windows\CalculatorAppUI.dll
+C:\Users\rocky\Documents\calculator_app_ui\CalculatorAppUI\bin\Debug\net10.0-windows\CalculatorAppUI.pdb
+C:\Users\rocky\Documents\calculator_app_ui\CalculatorAppUI\obj\Debug\net10.0-windows\CalculatorAppUI.dll
+C:\Users\rocky\Documents\calculator_app_ui\CalculatorAppUI\obj\Debug\net10.0-windows\refint\CalculatorAppUI.dll
+C:\Users\rocky\Documents\calculator_app_ui\CalculatorAppUI\obj\Debug\net10.0-windows\CalculatorAppUI.pdb
+C:\Users\rocky\Documents\calculator_app_ui\CalculatorAppUI\obj\Debug\net10.0-windows\CalculatorAppUI.genruntimeconfig.cache
+C:\Users\rocky\Documents\calculator_app_ui\CalculatorAppUI\obj\Debug\net10.0-windows\ref\CalculatorAppUI.dll
+C:\Users\rocky\Documents\calculator_app_ui\CalculatorAppUI\obj\Debug\net10.0-windows\CalculatorAppUI.Form1.resources
+C:\Users\rocky\Documents\calculator_app_ui\CalculatorAppUI\obj\Debug\net10.0-windows\CalculatorAppUI.csproj.GenerateResource.cache
