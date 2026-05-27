@@ -10,7 +10,7 @@ public partial class CalcUI : Form
 
     string placeHolder = "0"; 
     string calcOperator = "";
-    string? arg1, arg2;
+    string arg1, arg2 = "";
     public CalcUI()
     {
         InitializeComponent();
@@ -29,11 +29,6 @@ public partial class CalcUI : Form
 
     private void zeroButton_Click(object sender, EventArgs e) //0
     {
-        //for number buttons i have a couple things i need to work on here
-        //first i need some sort of string buffer or int buffer that i can later turn into a complete number via tryparse 
-        //then also, when this button is clicked, i need to figure out a way to display this on the label.
-        //i need to figure out what to do with the arguments with this function and figure out how to explain what is happening there.
-        //SHOULD I HANDLE KEYBOARD INPUT?
         if (placeHolder != "0")
         {
             if (label2.Text.Contains("="))
@@ -67,49 +62,29 @@ public partial class CalcUI : Form
 
     private void equateButton_Click(object sender, EventArgs e) //=
     {
-        //if (calcOperator != "")
-        //{
-        //    arg2 = placeHolder;
-        //    float result = calc.Add(float.Parse(arg1), float.Parse(arg2));
-        //    placeHolder = result.ToString();
-        //    label1.Text = result.ToString();
-        //    label2.Text = arg1 + " " + calcOperator + " " + arg2 + " " + "=";
-        //    arg1 = "";
-        //    arg2 = "";
-        //    calcOperator = "";
-        //}
         if (calcOperator != "")
         {
-            float result;
+            float result = 0;
+            arg2 = placeHolder;
             switch (calcOperator)
             {
                 case "+":
-                    arg2 = placeHolder;
                     result = calc.Add(float.Parse(arg1), float.Parse(arg2));
-                    placeHolder = result.ToString();
-                    label1.Text = result.ToString();
                     break;
                 case "-":
-                    arg2 = placeHolder;
                     result = calc.Subtract(float.Parse(arg1), float.Parse(arg2));
-                    placeHolder = result.ToString();
-                    label1.Text = result.ToString();
                     break;
                 case "*":
-                    arg2 = placeHolder;
                     result = calc.Multiply(float.Parse(arg1), float.Parse(arg2));
-                    placeHolder = result.ToString();
-                    label1.Text = result.ToString();
                     break;
                 case "/":
-                    arg2 = placeHolder;
                     result = calc.Divide(float.Parse(arg1), float.Parse(arg2));
-                    placeHolder = result.ToString();
-                    label1.Text = result.ToString();
                     break;
                 default:
                     break;
             }
+            placeHolder = result.ToString();
+            label1.Text = result.ToString();
             label2.Text = arg1 + " " + calcOperator + " " + arg2 + " " + "=";
             arg1 = "";
             arg2 = "";
@@ -135,93 +110,7 @@ public partial class CalcUI : Form
 
     private void plusButton_Click(object sender, EventArgs e) //+
     {
-        //need to get the calculator class set up and running here
-        //when i press this button, i need to be able to save the input that is currently present and clear the label text
-        //maybe i make an operator variable and set that variable here, maybe make another function to handle it too
-        //just to be sure that if use presses + by mistake and wanted -, they can switch to it seemlessly.
-
-        switch (calcOperator)
-        {
-            case "":
-                calcOperator = "+";
-                arg1 = placeHolder;
-                placeHolder = "0";
-                label1.Text = placeHolder;
-                label2.Text = arg1 + " " + calcOperator;
-                
-                break;
-            case "+":
-                calcOperator = "+";
-                if (placeHolder == "0")
-                {
-                    //if placeholder is empty, then the user just wanted to switch the operator. if thats the case, update the variable, update the text on screen.
-                    label2.Text = arg1 + " " + calcOperator;
-                }
-                else //user wanted to take whatever the current result would be, do the operation, then add something else.
-                {
-                    arg2 = placeHolder;
-                    float result = calc.Add(float.Parse(arg1), float.Parse(arg2));
-                    arg1 = result.ToString();
-                    placeHolder = "0";
-                    arg2 = "";
-                    label1.Text = placeHolder;
-                    label2.Text = arg1 + " " + calcOperator;
-                }
-                break;
-            case "-":
-                calcOperator = "+";
-                if (placeHolder == "0")
-                {
-                    label2.Text = arg1 + " " + calcOperator;
-                }
-                else
-                {
-                    arg2 = placeHolder;
-                    float result = calc.Subtract(float.Parse(arg1), float.Parse(arg2));
-                    arg1 = result.ToString();
-                    placeHolder = "0";
-                    arg2 = "";
-                    label1.Text = placeHolder;
-                    label2.Text = arg1 + " " + calcOperator;
-                }
-                break;
-            case "*":
-                calcOperator = "+";
-                if (placeHolder == "0")
-                {
-                    label2.Text = arg1 + " " + calcOperator;
-                }
-                else
-                {
-                    arg2 = placeHolder;
-                    float result = calc.Multiply(float.Parse(arg1), float.Parse(arg2));
-                    arg1 = result.ToString();
-                    placeHolder = "0";
-                    arg2 = "";
-                    label1.Text = placeHolder;
-                    label2.Text = arg1 + " " + calcOperator;
-                }
-                break;
-            case "/":
-                calcOperator = "+";
-                if (placeHolder == "0")
-                {
-                    label2.Text = arg1 + " " + calcOperator;
-                }
-                else
-                {
-                    arg2 = placeHolder;
-                    float result = calc.Divide(float.Parse(arg1), float.Parse(arg2));
-                    arg1 = result.ToString();
-                    placeHolder = "0";
-                    arg2 = "";
-                    label1.Text = placeHolder;
-                    label2.Text = arg1 + " " + calcOperator;
-                }
-                break;
-            default:
-                break;
-        }
+        HandleOperatorPress("+");
     }
 
     private void fourButton_Click(object sender, EventArgs e) //4
@@ -241,88 +130,7 @@ public partial class CalcUI : Form
 
     private void subtractButton_Click(object sender, EventArgs e) //-
     {
-        switch (calcOperator)
-        {
-            case "":
-                calcOperator = "-";
-                arg1 = placeHolder;
-                placeHolder = "0";
-                label1.Text = placeHolder;
-                label2.Text = arg1 + " " + calcOperator;
-
-                break;
-            case "+":
-                calcOperator = "-";
-                if (placeHolder == "0")
-                {
-                    //if placeholder is empty, then the user just wanted to switch the operator. if thats the case, update the variable, update the text on screen.
-                    label2.Text = arg1 + " " + calcOperator;
-                }
-                else //user wanted to take whatever the current result would be, do the operation, then add something else.
-                {
-                    arg2 = placeHolder;
-                    float result = calc.Add(float.Parse(arg1), float.Parse(arg2));
-                    arg1 = result.ToString();
-                    placeHolder = "0";
-                    arg2 = "";
-                    label1.Text = placeHolder;
-                    label2.Text = arg1 + " " + calcOperator;
-                }
-                break;
-            case "-":
-                calcOperator = "-";
-                if (placeHolder == "0")
-                {
-                    label2.Text = arg1 + " " + calcOperator;
-                }
-                else
-                {
-                    arg2 = placeHolder;
-                    float result = calc.Subtract(float.Parse(arg1), float.Parse(arg2));
-                    arg1 = result.ToString();
-                    placeHolder = "0";
-                    arg2 = "";
-                    label1.Text = placeHolder;
-                    label2.Text = arg1 + " " + calcOperator;
-                }
-                break;
-            case "*":
-                calcOperator = "-";
-                if (placeHolder == "0")
-                {
-                    label2.Text = arg1 + " " + calcOperator;
-                }
-                else
-                {
-                    arg2 = placeHolder;
-                    float result = calc.Multiply(float.Parse(arg1), float.Parse(arg2));
-                    arg1 = result.ToString();
-                    placeHolder = "0";
-                    arg2 = "";
-                    label1.Text = placeHolder;
-                    label2.Text = arg1 + " " + calcOperator;
-                }
-                break;
-            case "/":
-                calcOperator = "-";
-                if (placeHolder == "0")
-                {
-                    label2.Text = arg1 + " " + calcOperator;
-                }
-                else
-                {
-                    arg2 = placeHolder;
-                    float result = calc.Divide(float.Parse(arg1), float.Parse(arg2));
-                    arg1 = result.ToString();
-                    placeHolder = "0";
-                    arg2 = "";
-                    label1.Text = placeHolder;
-                    label2.Text = arg1 + " " + calcOperator;
-                }
-                break;
-            default:
-                break;
-        }
+        HandleOperatorPress("-");
     }
 
     private void sevenButton_Click(object sender, EventArgs e) //7
@@ -342,97 +150,15 @@ public partial class CalcUI : Form
 
     private void multiplyButton_Click(object sender, EventArgs e) //*
     {
-        switch (calcOperator)
-        {
-            case "":
-                calcOperator = "*";
-                arg1 = placeHolder;
-                placeHolder = "0";
-                label1.Text = placeHolder;
-                label2.Text = arg1 + " " + calcOperator;
-
-                break;
-            case "+":
-                calcOperator = "*";
-                if (placeHolder == "0")
-                {
-                    //if placeholder is empty, then the user just wanted to switch the operator. if thats the case, update the variable, update the text on screen.
-                    label2.Text = arg1 + " " + calcOperator;
-                }
-                else //user wanted to take whatever the current result would be, do the operation, then add something else.
-                {
-                    arg2 = placeHolder;
-                    float result = calc.Add(float.Parse(arg1), float.Parse(arg2));
-                    arg1 = result.ToString();
-                    placeHolder = "0";
-                    arg2 = "";
-                    label1.Text = placeHolder;
-                    label2.Text = arg1 + " " + calcOperator;
-                }
-                break;
-            case "-":
-                calcOperator = "*";
-                if (placeHolder == "0")
-                {
-                    label2.Text = arg1 + " " + calcOperator;
-                }
-                else
-                {
-                    arg2 = placeHolder;
-                    float result = calc.Subtract(float.Parse(arg1), float.Parse(arg2));
-                    arg1 = result.ToString();
-                    placeHolder = "0";
-                    arg2 = "";
-                    label1.Text = placeHolder;
-                    label2.Text = arg1 + " " + calcOperator;
-                }
-                break;
-            case "*":
-                calcOperator = "*";
-                if (placeHolder == "0")
-                {
-                    label2.Text = arg1 + " " + calcOperator;
-                }
-                else
-                {
-                    arg2 = placeHolder;
-                    float result = calc.Multiply(float.Parse(arg1), float.Parse(arg2));
-                    arg1 = result.ToString();
-                    placeHolder = "0";
-                    arg2 = "";
-                    label1.Text = placeHolder;
-                    label2.Text = arg1 + " " + calcOperator;
-                }
-                break;
-            case "/":
-                calcOperator = "*";
-                if (placeHolder == "0")
-                {
-                    label2.Text = arg1 + " " + calcOperator;
-                }
-                else
-                {
-                    arg2 = placeHolder;
-                    float result = calc.Divide(float.Parse(arg1), float.Parse(arg2));
-                    arg1 = result.ToString();
-                    placeHolder = "0";
-                    arg2 = "";
-                    label1.Text = placeHolder;
-                    label2.Text = arg1 + " " + calcOperator;
-                }
-                break;
-            default:
-                break;
-        }
+        HandleOperatorPress("*");
     }
 
     private void percentButton_Click(object sender, EventArgs e) //%
     {
-        //this thing is NOT a simple divide by 100 man.
+        //this thing is NOT a simple divide by 100.
         if (calcOperator == "")
         {
             placeHolder = calc.Percent(float.Parse(placeHolder)).ToString();
-            label1.Text = placeHolder;
         }
         else
         {
@@ -440,23 +166,20 @@ public partial class CalcUI : Form
             {
                 case "+":
                     placeHolder = calc.PercentageOf(float.Parse(arg1), float.Parse(placeHolder)).ToString();
-                    label1.Text = placeHolder;
                     break;
                 case "-":
                     placeHolder = calc.PercentageOf(float.Parse(arg1), float.Parse(placeHolder)).ToString();
-                    label1.Text = placeHolder;
                     break;
                 case "*":
                     placeHolder = calc.Percent(float.Parse(placeHolder)).ToString();
-                    label1.Text = placeHolder;
                     break;
                 case "/":
                     placeHolder = calc.Percent(float.Parse(placeHolder)).ToString();
-                    label1.Text = placeHolder;
                     break;
                 default: break;
             }
         }
+        label1.Text = placeHolder;
     }
 
     private void clearEntryButton_Click(object sender, EventArgs e) //CE
@@ -471,87 +194,46 @@ public partial class CalcUI : Form
 
     private void divideButton_Click(object sender, EventArgs e) //'/'
     {
-        switch (calcOperator)
-        {
-            case "":
-                calcOperator = "/";
-                arg1 = placeHolder;
-                placeHolder = "0";
-                label1.Text = placeHolder;
-                label2.Text = arg1 + " " + calcOperator;
-
-                break;
-            case "+":
-                calcOperator = "/";
-                if (placeHolder == "0")
-                {
-                    //if placeholder is empty, then the user just wanted to switch the operator. if thats the case, update the variable, update the text on screen.
-                    label2.Text = arg1 + " " + calcOperator;
-                }
-                else //user wanted to take whatever the current result would be, do the operation, then add something else.
-                {
-                    arg2 = placeHolder;
-                    float result = calc.Add(float.Parse(arg1), float.Parse(arg2));
-                    arg1 = result.ToString();
-                    placeHolder = "0";
-                    arg2 = "";
-                    label1.Text = placeHolder;
-                    label2.Text = arg1 + " " + calcOperator;
-                }
-                break;
-            case "-":
-                calcOperator = "/";
-                if (placeHolder == "0")
-                {
-                    label2.Text = arg1 + " " + calcOperator;
-                }
-                else
-                {
-                    arg2 = placeHolder;
-                    float result = calc.Subtract(float.Parse(arg1), float.Parse(arg2));
-                    arg1 = result.ToString();
-                    placeHolder = "0";
-                    arg2 = "";
-                    label1.Text = placeHolder;
-                    label2.Text = arg1 + " " + calcOperator;
-                }
-                break;
-            case "*":
-                calcOperator = "/";
-                if (placeHolder == "0")
-                {
-                    label2.Text = arg1 + " " + calcOperator;
-                }
-                else
-                {
-                    arg2 = placeHolder;
-                    float result = calc.Multiply(float.Parse(arg1), float.Parse(arg2));
-                    arg1 = result.ToString();
-                    placeHolder = "0";
-                    arg2 = "";
-                    label1.Text = placeHolder;
-                    label2.Text = arg1 + " " + calcOperator;
-                }
-                break;
-            case "/":
-                calcOperator = "/";
-                if (placeHolder == "0")
-                {
-                    label2.Text = arg1 + " " + calcOperator;
-                }
-                else
-                {
-                    arg2 = placeHolder;
-                    float result = calc.Divide(float.Parse(arg1), float.Parse(arg2));
-                    arg1 = result.ToString();
-                    placeHolder = "0";
-                    arg2 = "";
-                    label1.Text = placeHolder;
-                    label2.Text = arg1 + " " + calcOperator;
-                }
-                break;
-            default:
-                break;
-        }
+        HandleOperatorPress("/");
     }
+    private void HandleOperatorPress(string newOperator)
+    {
+        if (calcOperator == "")
+        {
+            arg1 = placeHolder;
+            placeHolder = "0";
+            label1.Text = placeHolder;
+        }
+        else if (placeHolder != "0") //user wanted to take whatever the current result would be, do the operation, then use the newOperator to do something else.
+        {
+            arg2 = placeHolder;
+            float result = 0;
+            switch (calcOperator)
+            {
+                case "+":
+                    result = calc.Add(float.Parse(arg1), float.Parse(arg2));
+                    break;
+                case "-":
+                    result = calc.Subtract(float.Parse(arg1), float.Parse(arg2));
+                    break;
+                case "*":
+                    result = calc.Multiply(float.Parse(arg1), float.Parse(arg2));
+                    break;
+                case "/":
+                    result = calc.Divide(float.Parse(arg1), float.Parse(arg2));
+                    break;
+                default:
+                    break;
+            }
+            arg1 = result.ToString();
+            placeHolder = "0";
+            arg2 = "";
+            label1.Text = placeHolder;
+        }
+        calcOperator = newOperator;
+        label2.Text = arg1 + " " + calcOperator;
+
+    }
+
+    //GOH: need to solve divide by zero with tryparse stuff
 }
