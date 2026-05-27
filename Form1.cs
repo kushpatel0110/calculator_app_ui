@@ -21,13 +21,13 @@ public partial class Form1 : Form
 
     }
 
-    private void button1_Click(object sender, EventArgs e) //negate
+    private void negateButton_Click(object sender, EventArgs e) //negate
     {
         placeHolder = calc.Negate(float.Parse(placeHolder)).ToString();
         label1.Text = placeHolder;
     }
 
-    private void button2_Click(object sender, EventArgs e) //0
+    private void zeroButton_Click(object sender, EventArgs e) //0
     {
         //for number buttons i have a couple things i need to work on here
         //first i need some sort of string buffer or int buffer that i can later turn into a complete number via tryparse 
@@ -50,7 +50,7 @@ public partial class Form1 : Form
         }
     }
 
-    private void button3_Click(object sender, EventArgs e) //.
+    private void periodButton_Click(object sender, EventArgs e) //.
     {
         if (label2.Text.Contains('='))
         {
@@ -65,7 +65,7 @@ public partial class Form1 : Form
         }
     }
 
-    private void button4_Click(object sender, EventArgs e) //=
+    private void equateButton_Click(object sender, EventArgs e) //=
     {
         //if (calcOperator != "")
         //{
@@ -118,22 +118,22 @@ public partial class Form1 : Form
 
     }
 
-    private void button5_Click(object sender, EventArgs e) //1
+    private void oneButton_Click(object sender, EventArgs e) //1
     {
         OutputUpdater.UpdateCalcText(this, ref placeHolder, "1");
     }
 
-    private void button6_Click(object sender, EventArgs e) //2
+    private void twoButton_Click(object sender, EventArgs e) //2
     {
         OutputUpdater.UpdateCalcText(this, ref placeHolder, "2");
     }
 
-    private void button7_Click(object sender, EventArgs e) //3
+    private void threeButton_Click(object sender, EventArgs e) //3
     {
         OutputUpdater.UpdateCalcText(this, ref placeHolder, "3");
     }
 
-    private void button8_Click(object sender, EventArgs e) //+
+    private void plusButton_Click(object sender, EventArgs e) //+
     {
         //need to get the calculator class set up and running here
         //when i press this button, i need to be able to save the input that is currently present and clear the label text
@@ -224,22 +224,22 @@ public partial class Form1 : Form
         }
     }
 
-    private void button9_Click(object sender, EventArgs e) //4
+    private void fourButton_Click(object sender, EventArgs e) //4
     {
         OutputUpdater.UpdateCalcText(this, ref placeHolder, "4");
     }
 
-    private void button10_Click(object sender, EventArgs e) //5
+    private void fiveButton_Click(object sender, EventArgs e) //5
     {
         OutputUpdater.UpdateCalcText(this, ref placeHolder, "5");
     }
 
-    private void button11_Click(object sender, EventArgs e) //6
+    private void sixButton_Click(object sender, EventArgs e) //6
     {
         OutputUpdater.UpdateCalcText(this, ref placeHolder, "6");
     }
 
-    private void button12_Click(object sender, EventArgs e) //-
+    private void subtractButton_Click(object sender, EventArgs e) //-
     {
         switch (calcOperator)
         {
@@ -325,22 +325,22 @@ public partial class Form1 : Form
         }
     }
 
-    private void button13_Click(object sender, EventArgs e) //7
+    private void sevenButton_Click(object sender, EventArgs e) //7
     {
         OutputUpdater.UpdateCalcText(this, ref placeHolder, "7");
     }
 
-    private void button14_Click(object sender, EventArgs e) //8
+    private void eightButton_Click(object sender, EventArgs e) //8
     {
         OutputUpdater.UpdateCalcText(this, ref placeHolder, "8");
     }
 
-    private void button15_Click(object sender, EventArgs e) //9
+    private void nineButton_Click(object sender, EventArgs e) //9
     {
         OutputUpdater.UpdateCalcText(this, ref placeHolder, "9");
     }
 
-    private void button16_Click(object sender, EventArgs e) //*
+    private void multiplyButton_Click(object sender, EventArgs e) //*
     {
         switch (calcOperator)
         {
@@ -426,7 +426,7 @@ public partial class Form1 : Form
         }
     }
 
-    private void button17_Click(object sender, EventArgs e) //%
+    private void percentButton_Click(object sender, EventArgs e) //%
     {
         //this thing is NOT a simple divide by 100 man.
         if (calcOperator == "")
@@ -459,17 +459,17 @@ public partial class Form1 : Form
         }
     }
 
-    private void button18_Click(object sender, EventArgs e) //CE
+    private void clearEntryButton_Click(object sender, EventArgs e) //CE
     {
         OutputUpdater.ClearEntry(this, ref placeHolder);
     }
 
-    private void button19_Click(object sender, EventArgs e) //C
+    private void clearAllButton_Click(object sender, EventArgs e) //C
     {
         OutputUpdater.ClearEverything(this, ref placeHolder, ref arg1, ref arg2, ref calcOperator);
     }
 
-    private void button20_Click(object sender, EventArgs e) //'/'
+    private void divideButton_Click(object sender, EventArgs e) //'/'
     {
         switch (calcOperator)
         {
