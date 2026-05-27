@@ -1,6 +1,6 @@
 using System.Runtime.CompilerServices;
 
-namespace CalculatorApp.Services
+namespace CalculatorAppUI.Services
 {
     public class Calculator
     {
