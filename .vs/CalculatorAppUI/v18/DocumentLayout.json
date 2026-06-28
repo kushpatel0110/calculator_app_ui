@@ -3,20 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\rocky\\Documents\\calculator_app_ui\\CalculatorAppUI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{57A83B14-8133-C25E-2261-9A1B72E0EA50}|CalculatorAppUI.csproj|c:\\users\\rocky\\documents\\calculator_app_ui\\calculatorappui\\calcui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{57A83B14-8133-C25E-2261-9A1B72E0EA50}|CalculatorAppUI.csproj|solutionrelative:calcui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{57A83B14-8133-C25E-2261-9A1B72E0EA50}|CalculatorAppUI.csproj|c:\\users\\rocky\\documents\\calculator_app_ui\\calculatorappui\\calcui.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{57A83B14-8133-C25E-2261-9A1B72E0EA50}|CalculatorAppUI.csproj|solutionrelative:calcui.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{57A83B14-8133-C25E-2261-9A1B72E0EA50}|CalculatorAppUI.csproj|c:\\users\\rocky\\documents\\calculator_app_ui\\calculatorappui\\services\\calculator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{57A83B14-8133-C25E-2261-9A1B72E0EA50}|CalculatorAppUI.csproj|solutionrelative:services\\calculator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{57A83B14-8133-C25E-2261-9A1B72E0EA50}|CalculatorAppUI.csproj|c:\\users\\rocky\\documents\\calculator_app_ui\\calculatorappui\\calcui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{57A83B14-8133-C25E-2261-9A1B72E0EA50}|CalculatorAppUI.csproj|solutionrelative:calcui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FAF0F4E4-769C-47C4-844B-6B80DEA621C3}|..\\CalculatorAppUI.Tests\\CalculatorAppUI.Tests.csproj|c:\\users\\rocky\\documents\\calculator_app_ui\\calculatorappui.tests\\calcunittests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -28,6 +16,18 @@
     {
       "AbsoluteMoniker": "D:0:0:{57A83B14-8133-C25E-2261-9A1B72E0EA50}|CalculatorAppUI.csproj|c:\\users\\rocky\\documents\\calculator_app_ui\\calculatorappui\\utils\\outputupdater.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{57A83B14-8133-C25E-2261-9A1B72E0EA50}|CalculatorAppUI.csproj|solutionrelative:utils\\outputupdater.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57A83B14-8133-C25E-2261-9A1B72E0EA50}|CalculatorAppUI.csproj|c:\\users\\rocky\\documents\\calculator_app_ui\\calculatorappui\\calcui.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{57A83B14-8133-C25E-2261-9A1B72E0EA50}|CalculatorAppUI.csproj|solutionrelative:calcui.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57A83B14-8133-C25E-2261-9A1B72E0EA50}|CalculatorAppUI.csproj|c:\\users\\rocky\\documents\\calculator_app_ui\\calculatorappui\\calcui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{57A83B14-8133-C25E-2261-9A1B72E0EA50}|CalculatorAppUI.csproj|solutionrelative:calcui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57A83B14-8133-C25E-2261-9A1B72E0EA50}|CalculatorAppUI.csproj|c:\\users\\rocky\\documents\\calculator_app_ui\\calculatorappui\\calcui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{57A83B14-8133-C25E-2261-9A1B72E0EA50}|CalculatorAppUI.csproj|solutionrelative:calcui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -37,24 +37,25 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "CalcUI.cs",
               "DocumentMoniker": "C:\\Users\\rocky\\Documents\\calculator_app_ui\\CalculatorAppUI\\CalcUI.cs",
               "RelativeDocumentMoniker": "CalcUI.cs",
               "ToolTip": "C:\\Users\\rocky\\Documents\\calculator_app_ui\\CalculatorAppUI\\CalcUI.cs",
               "RelativeToolTip": "CalcUI.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAAnwEYAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAABgAAAAAAAAAAAAowDwAAABMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-19T23:11:38.79Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Calculator.cs",
               "DocumentMoniker": "C:\\Users\\rocky\\Documents\\calculator_app_ui\\CalculatorAppUI\\Services\\Calculator.cs",
               "RelativeDocumentMoniker": "Services\\Calculator.cs",
@@ -67,7 +68,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "CalcUnitTests.cs",
               "DocumentMoniker": "C:\\Users\\rocky\\Documents\\calculator_app_ui\\CalculatorAppUI.Tests\\CalcUnitTests.cs",
               "RelativeDocumentMoniker": "..\\CalculatorAppUI.Tests\\CalcUnitTests.cs",
@@ -80,7 +81,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\rocky\\Documents\\calculator_app_ui\\CalculatorAppUI\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -94,32 +95,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "OutputUpdater.cs",
-              "DocumentMoniker": "C:\\Users\\rocky\\Documents\\calculator_app_ui\\CalculatorAppUI\\Utils\\OutputUpdater.cs",
-              "RelativeDocumentMoniker": "Utils\\OutputUpdater.cs",
-              "ToolTip": "C:\\Users\\rocky\\Documents\\calculator_app_ui\\CalculatorAppUI\\Utils\\OutputUpdater.cs",
-              "RelativeToolTip": "Utils\\OutputUpdater.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-20T02:46:05.735Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CalcUI.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\rocky\\Documents\\calculator_app_ui\\CalculatorAppUI\\CalcUI.Designer.cs",
-              "RelativeDocumentMoniker": "CalcUI.Designer.cs",
-              "ToolTip": "C:\\Users\\rocky\\Documents\\calculator_app_ui\\CalculatorAppUI\\CalcUI.Designer.cs",
-              "RelativeToolTip": "CalcUI.Designer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-19T23:12:02.087Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "CalcUI.cs [Design]",
               "DocumentMoniker": "C:\\Users\\rocky\\Documents\\calculator_app_ui\\CalculatorAppUI\\CalcUI.cs",
               "RelativeDocumentMoniker": "CalcUI.cs",
@@ -128,6 +103,32 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-17T01:30:34.807Z",
               "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "OutputUpdater.cs",
+              "DocumentMoniker": "C:\\Users\\rocky\\Documents\\calculator_app_ui\\CalculatorAppUI\\Utils\\OutputUpdater.cs",
+              "RelativeDocumentMoniker": "Utils\\OutputUpdater.cs",
+              "ToolTip": "C:\\Users\\rocky\\Documents\\calculator_app_ui\\CalculatorAppUI\\Utils\\OutputUpdater.cs*",
+              "RelativeToolTip": "Utils\\OutputUpdater.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T02:46:05.735Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CalcUI.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\rocky\\Documents\\calculator_app_ui\\CalculatorAppUI\\CalcUI.Designer.cs",
+              "RelativeDocumentMoniker": "CalcUI.Designer.cs",
+              "ToolTip": "C:\\Users\\rocky\\Documents\\calculator_app_ui\\CalculatorAppUI\\CalcUI.Designer.cs",
+              "RelativeToolTip": "CalcUI.Designer.cs",
+              "ViewState": "AgIAAIEBAAAAAAAAAAAmwJ0BAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-19T23:12:02.087Z",
+              "EditorCaption": ""
             }
           ]
         }

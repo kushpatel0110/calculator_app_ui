@@ -11,6 +11,7 @@ namespace CalculatorAppUI.Utils
                 if (form.label2.Text.Contains("="))
                 {
                     form.label2.Text = "";
+
                 }
                 placeHolder = digit;
             }
