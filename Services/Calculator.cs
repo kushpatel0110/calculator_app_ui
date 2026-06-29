@@ -2,31 +2,31 @@ namespace CalculatorAppUI.Services
 {
     public class Calculator
     {
-        public float Add(float a, float b)
+        public double Add(double a, double b)
         {
             return a + b;
         }
-        public float Subtract(float a, float b)
+        public double Subtract(double a, double b)
         {
             return a - b; 
         }
-        public float Multiply(float a, float b)
+        public double Multiply(double a, double b)
         {
             return a * b;
         }
-        public float Divide(float a, float b)
+        public double Divide(double a, double b)
         {
             return a / b;
         }
-        public float Negate(float a)
+        public double Negate(double a)
         {
-            return a * -1f;
+            return a * -1d;
         }
-        public float Percent(float a)
+        public double Percent(double a)
         {
-            return a / 100f;
+            return a / 100d;
         }
-        public float PercentageOf(float a, float b)
+        public double PercentageOf(double a, double b)
         {
             return ((b / 100) * a);
         }
