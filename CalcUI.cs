@@ -20,7 +20,7 @@ public partial class CalcUI : Form
 
     private void NegateButton_Click(object sender, EventArgs e) //negate
     {
-        placeHolder = calc.Negate(float.Parse(placeHolder)).ToString();
+        placeHolder = calc.Negate(double.Parse(placeHolder)).ToString();
         label1.Text = placeHolder;
         if (label2.Text.Contains("="))
         {
@@ -53,7 +53,7 @@ public partial class CalcUI : Form
         if (calcOperator != "")
         {
             arg2 = placeHolder;
-            float result = 0;
+            double result = 0;
             if (GetResultFromOperation(ref result))
             {
                 placeHolder = result.ToString();
@@ -132,23 +132,23 @@ public partial class CalcUI : Form
         //this thing is NOT a simple divide by 100.
         if (calcOperator == "")
         {
-            placeHolder = calc.Percent(float.Parse(placeHolder)).ToString();
+            placeHolder = calc.Percent(double.Parse(placeHolder)).ToString();
         }
         else
         {
             switch (calcOperator)
             {
                 case "+":
-                    placeHolder = calc.PercentageOf(float.Parse(arg1), float.Parse(placeHolder)).ToString();
+                    placeHolder = calc.PercentageOf(double.Parse(arg1), double.Parse(placeHolder)).ToString();
                     break;
                 case "-":
-                    placeHolder = calc.PercentageOf(float.Parse(arg1), float.Parse(placeHolder)).ToString();
+                    placeHolder = calc.PercentageOf(double.Parse(arg1), double.Parse(placeHolder)).ToString();
                     break;
                 case "*":
-                    placeHolder = calc.Percent(float.Parse(placeHolder)).ToString();
+                    placeHolder = calc.Percent(double.Parse(placeHolder)).ToString();
                     break;
                 case "/":
-                    placeHolder = calc.Percent(float.Parse(placeHolder)).ToString();
+                    placeHolder = calc.Percent(double.Parse(placeHolder)).ToString();
                     break;
                 default: break;
             }
@@ -181,7 +181,7 @@ public partial class CalcUI : Form
         else if (placeHolder != "0") //user wanted to take whatever the current result would be, do the operation, then use the newOperator to do something else.
         {
             arg2 = placeHolder;
-            float result = 0;
+            double result = 0;
             if (GetResultFromOperation(ref result))
             {
                 arg1 = result.ToString();
@@ -189,28 +189,32 @@ public partial class CalcUI : Form
                 arg2 = "";
                 label1.Text = placeHolder;
             }
+            else
+            {
+                return;
+            }
         }
         calcOperator = newOperator;
         label2.Text = arg1 + " " + calcOperator;
 
     }
-    private bool GetResultFromOperation(ref float result)
+    private bool GetResultFromOperation(ref double result)
     { 
         switch (calcOperator)
         {
             case "+":
-                result = calc.Add(float.Parse(arg1), float.Parse(arg2));
+                result = calc.Add(double.Parse(arg1), double.Parse(arg2));
                 break;
             case "-":
-                result = calc.Subtract(float.Parse(arg1), float.Parse(arg2));
+                result = calc.Subtract(double.Parse(arg1), double.Parse(arg2));
                 break;
             case "*":
-                result = calc.Multiply(float.Parse(arg1), float.Parse(arg2));
+                result = calc.Multiply(double.Parse(arg1), double.Parse(arg2));
                 break;
             case "/":
-                if (float.Parse(arg2) != 0f)
+                if (double.Parse(arg2) != 0d)
                 {
-                    result = calc.Divide(float.Parse(arg1), float.Parse(arg2));
+                    result = calc.Divide(double.Parse(arg1), double.Parse(arg2));
                 }
                 else
                 {
