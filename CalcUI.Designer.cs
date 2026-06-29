@@ -409,8 +409,10 @@ partial class CalcUI
         Controls.Add(label2);
         Controls.Add(label1);
         ForeColor = SystemColors.ControlText;
+        KeyPreview = true;
         Name = "CalcUI";
         Text = "Kush's Calculator Xtreme!!!";
+        KeyDown += CalcUI_KeyDown;
         tableLayoutPanel1.ResumeLayout(false);
         ResumeLayout(false);
     }
