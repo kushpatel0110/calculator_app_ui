@@ -27,7 +27,7 @@ namespace CalculatorAppUI.Utils
             }
             form.label1.Text = placeHolder;
         }
-        public static void ClearEverything(CalcUI form, ref string placeHolder, ref string arg1, ref string arg2, ref string calcOperator)
+        public static void ClearEverything(CalcUI form, ref string placeHolder, ref string arg1, ref string arg2, ref string calcOperator, ref bool argumentEntered)
         {
             placeHolder = "0";
             form.label1.Text = "0";
@@ -35,11 +35,13 @@ namespace CalculatorAppUI.Utils
             arg1 = "";
             arg2 = "";
             calcOperator = "";
+            argumentEntered = false;
         }
-        public static void ClearEntry(CalcUI form, ref string placeHolder)
+        public static void ClearEntry(CalcUI form, ref string placeHolder, ref bool argumentEntered)
         {
             placeHolder = "0";
             form.label1.Text = "0";
+            argumentEntered = false;
         }
     }
 }
