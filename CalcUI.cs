@@ -347,4 +347,29 @@ public partial class CalcUI : Form
 
         }
     }
+
+    private void BasicToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        if (scientificPanel.Visible == true)
+        {
+            this.Width = this.Width - scientificPanel.Width;
+            scientificPanel.Visible = false;
+            
+        }
+    }
+
+    private void ScientificToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        if (scientificPanel.Visible == false)
+        {
+            this.Width = this.Width + scientificPanel.Width;
+            scientificPanel.Visible = true;
+            
+        }
+    }
+
+    private void CalcUI_Load(object sender, EventArgs e)
+    {
+
+    }
 }

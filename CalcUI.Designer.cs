@@ -51,18 +51,26 @@ partial class CalcUI
         divideButton = new Button();
         label2 = new Label();
         tableLayoutPanel1 = new TableLayoutPanel();
+        menuStrip1 = new MenuStrip();
+        viewToolStripMenuItem = new ToolStripMenuItem();
+        basicToolStripMenuItem = new ToolStripMenuItem();
+        scientificToolStripMenuItem = new ToolStripMenuItem();
+        basicPanel = new Panel();
+        scientificPanel = new Panel();
         tableLayoutPanel1.SuspendLayout();
+        menuStrip1.SuspendLayout();
+        basicPanel.SuspendLayout();
         SuspendLayout();
         // 
         // label1
         // 
-        label1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+        label1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
         label1.BorderStyle = BorderStyle.Fixed3D;
         label1.Font = new Font("Segoe UI", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
         label1.ForeColor = SystemColors.HotTrack;
         label1.Location = new Point(0, 0);
         label1.Name = "label1";
-        label1.Size = new Size(519, 133);
+        label1.Size = new Size(319, 133);
         label1.TabIndex = 0;
         label1.Text = "0";
         label1.TextAlign = ContentAlignment.MiddleRight;
@@ -75,7 +83,7 @@ partial class CalcUI
         negateButton.ForeColor = Color.Cyan;
         negateButton.Location = new Point(3, 419);
         negateButton.Name = "negateButton";
-        negateButton.Size = new Size(123, 102);
+        negateButton.Size = new Size(73, 102);
         negateButton.TabIndex = 1;
         negateButton.Text = "+/-";
         negateButton.UseVisualStyleBackColor = false;
@@ -87,9 +95,9 @@ partial class CalcUI
         zeroButton.Dock = DockStyle.Fill;
         zeroButton.Font = new Font("Segoe UI", 24F);
         zeroButton.ForeColor = Color.Cyan;
-        zeroButton.Location = new Point(132, 419);
+        zeroButton.Location = new Point(82, 419);
         zeroButton.Name = "zeroButton";
-        zeroButton.Size = new Size(123, 102);
+        zeroButton.Size = new Size(73, 102);
         zeroButton.TabIndex = 2;
         zeroButton.Text = "0";
         zeroButton.UseVisualStyleBackColor = false;
@@ -101,9 +109,9 @@ partial class CalcUI
         periodButton.Dock = DockStyle.Fill;
         periodButton.Font = new Font("Segoe UI", 24F);
         periodButton.ForeColor = Color.Cyan;
-        periodButton.Location = new Point(261, 419);
+        periodButton.Location = new Point(161, 419);
         periodButton.Name = "periodButton";
-        periodButton.Size = new Size(123, 102);
+        periodButton.Size = new Size(73, 102);
         periodButton.TabIndex = 3;
         periodButton.Text = ".";
         periodButton.UseVisualStyleBackColor = false;
@@ -116,9 +124,9 @@ partial class CalcUI
         equateButton.Dock = DockStyle.Fill;
         equateButton.Font = new Font("Segoe UI", 24F);
         equateButton.ForeColor = Color.Black;
-        equateButton.Location = new Point(390, 419);
+        equateButton.Location = new Point(240, 419);
         equateButton.Name = "equateButton";
-        equateButton.Size = new Size(126, 102);
+        equateButton.Size = new Size(76, 102);
         equateButton.TabIndex = 4;
         equateButton.Text = "=";
         equateButton.UseVisualStyleBackColor = false;
@@ -132,7 +140,7 @@ partial class CalcUI
         oneButton.ForeColor = Color.Cyan;
         oneButton.Location = new Point(3, 315);
         oneButton.Name = "oneButton";
-        oneButton.Size = new Size(123, 98);
+        oneButton.Size = new Size(73, 98);
         oneButton.TabIndex = 5;
         oneButton.Text = "1";
         oneButton.UseVisualStyleBackColor = false;
@@ -144,9 +152,9 @@ partial class CalcUI
         twoButton.Dock = DockStyle.Fill;
         twoButton.Font = new Font("Segoe UI", 24F);
         twoButton.ForeColor = Color.Cyan;
-        twoButton.Location = new Point(132, 315);
+        twoButton.Location = new Point(82, 315);
         twoButton.Name = "twoButton";
-        twoButton.Size = new Size(123, 98);
+        twoButton.Size = new Size(73, 98);
         twoButton.TabIndex = 6;
         twoButton.Text = "2";
         twoButton.UseVisualStyleBackColor = false;
@@ -158,9 +166,9 @@ partial class CalcUI
         threeButton.Dock = DockStyle.Fill;
         threeButton.Font = new Font("Segoe UI", 24F);
         threeButton.ForeColor = Color.Cyan;
-        threeButton.Location = new Point(261, 315);
+        threeButton.Location = new Point(161, 315);
         threeButton.Name = "threeButton";
-        threeButton.Size = new Size(123, 98);
+        threeButton.Size = new Size(73, 98);
         threeButton.TabIndex = 7;
         threeButton.Text = "3";
         threeButton.UseVisualStyleBackColor = false;
@@ -172,9 +180,9 @@ partial class CalcUI
         plusButton.Dock = DockStyle.Fill;
         plusButton.Font = new Font("Segoe UI", 24F);
         plusButton.ForeColor = Color.Cyan;
-        plusButton.Location = new Point(390, 315);
+        plusButton.Location = new Point(240, 315);
         plusButton.Name = "plusButton";
-        plusButton.Size = new Size(126, 98);
+        plusButton.Size = new Size(76, 98);
         plusButton.TabIndex = 8;
         plusButton.Text = "+";
         plusButton.UseVisualStyleBackColor = false;
@@ -188,7 +196,7 @@ partial class CalcUI
         fourButton.ForeColor = Color.Cyan;
         fourButton.Location = new Point(3, 211);
         fourButton.Name = "fourButton";
-        fourButton.Size = new Size(123, 98);
+        fourButton.Size = new Size(73, 98);
         fourButton.TabIndex = 9;
         fourButton.Text = "4";
         fourButton.UseVisualStyleBackColor = false;
@@ -200,9 +208,9 @@ partial class CalcUI
         fiveButton.Dock = DockStyle.Fill;
         fiveButton.Font = new Font("Segoe UI", 24F);
         fiveButton.ForeColor = Color.Cyan;
-        fiveButton.Location = new Point(132, 211);
+        fiveButton.Location = new Point(82, 211);
         fiveButton.Name = "fiveButton";
-        fiveButton.Size = new Size(123, 98);
+        fiveButton.Size = new Size(73, 98);
         fiveButton.TabIndex = 10;
         fiveButton.Text = "5";
         fiveButton.UseVisualStyleBackColor = false;
@@ -214,9 +222,9 @@ partial class CalcUI
         sixButton.Dock = DockStyle.Fill;
         sixButton.Font = new Font("Segoe UI", 24F);
         sixButton.ForeColor = Color.Cyan;
-        sixButton.Location = new Point(261, 211);
+        sixButton.Location = new Point(161, 211);
         sixButton.Name = "sixButton";
-        sixButton.Size = new Size(123, 98);
+        sixButton.Size = new Size(73, 98);
         sixButton.TabIndex = 11;
         sixButton.Text = "6";
         sixButton.UseVisualStyleBackColor = false;
@@ -228,9 +236,9 @@ partial class CalcUI
         subtractButton.Dock = DockStyle.Fill;
         subtractButton.Font = new Font("Segoe UI", 24F);
         subtractButton.ForeColor = Color.Cyan;
-        subtractButton.Location = new Point(390, 211);
+        subtractButton.Location = new Point(240, 211);
         subtractButton.Name = "subtractButton";
-        subtractButton.Size = new Size(126, 98);
+        subtractButton.Size = new Size(76, 98);
         subtractButton.TabIndex = 12;
         subtractButton.Text = "-";
         subtractButton.UseVisualStyleBackColor = false;
@@ -244,7 +252,7 @@ partial class CalcUI
         sevenButton.ForeColor = Color.Cyan;
         sevenButton.Location = new Point(3, 107);
         sevenButton.Name = "sevenButton";
-        sevenButton.Size = new Size(123, 98);
+        sevenButton.Size = new Size(73, 98);
         sevenButton.TabIndex = 13;
         sevenButton.Text = "7";
         sevenButton.UseVisualStyleBackColor = false;
@@ -256,9 +264,9 @@ partial class CalcUI
         eightButton.Dock = DockStyle.Fill;
         eightButton.Font = new Font("Segoe UI", 24F);
         eightButton.ForeColor = Color.Cyan;
-        eightButton.Location = new Point(132, 107);
+        eightButton.Location = new Point(82, 107);
         eightButton.Name = "eightButton";
-        eightButton.Size = new Size(123, 98);
+        eightButton.Size = new Size(73, 98);
         eightButton.TabIndex = 14;
         eightButton.Text = "8";
         eightButton.UseVisualStyleBackColor = false;
@@ -270,9 +278,9 @@ partial class CalcUI
         nineButton.Dock = DockStyle.Fill;
         nineButton.Font = new Font("Segoe UI", 24F);
         nineButton.ForeColor = Color.Cyan;
-        nineButton.Location = new Point(261, 107);
+        nineButton.Location = new Point(161, 107);
         nineButton.Name = "nineButton";
-        nineButton.Size = new Size(123, 98);
+        nineButton.Size = new Size(73, 98);
         nineButton.TabIndex = 15;
         nineButton.Text = "9";
         nineButton.UseVisualStyleBackColor = false;
@@ -284,9 +292,9 @@ partial class CalcUI
         multiplyButton.Dock = DockStyle.Fill;
         multiplyButton.Font = new Font("Segoe UI", 24F);
         multiplyButton.ForeColor = Color.Cyan;
-        multiplyButton.Location = new Point(390, 107);
+        multiplyButton.Location = new Point(240, 107);
         multiplyButton.Name = "multiplyButton";
-        multiplyButton.Size = new Size(126, 98);
+        multiplyButton.Size = new Size(76, 98);
         multiplyButton.TabIndex = 16;
         multiplyButton.Text = "*";
         multiplyButton.UseVisualStyleBackColor = false;
@@ -300,7 +308,7 @@ partial class CalcUI
         percentButton.ForeColor = Color.Cyan;
         percentButton.Location = new Point(3, 3);
         percentButton.Name = "percentButton";
-        percentButton.Size = new Size(123, 98);
+        percentButton.Size = new Size(73, 98);
         percentButton.TabIndex = 17;
         percentButton.Text = "%";
         percentButton.UseVisualStyleBackColor = false;
@@ -312,9 +320,9 @@ partial class CalcUI
         clearEntryButton.Dock = DockStyle.Fill;
         clearEntryButton.Font = new Font("Segoe UI", 24F);
         clearEntryButton.ForeColor = Color.Cyan;
-        clearEntryButton.Location = new Point(132, 3);
+        clearEntryButton.Location = new Point(82, 3);
         clearEntryButton.Name = "clearEntryButton";
-        clearEntryButton.Size = new Size(123, 98);
+        clearEntryButton.Size = new Size(73, 98);
         clearEntryButton.TabIndex = 18;
         clearEntryButton.Text = "CE";
         clearEntryButton.UseVisualStyleBackColor = false;
@@ -326,9 +334,9 @@ partial class CalcUI
         clearAllButton.Dock = DockStyle.Fill;
         clearAllButton.Font = new Font("Segoe UI", 24F);
         clearAllButton.ForeColor = Color.Cyan;
-        clearAllButton.Location = new Point(261, 3);
+        clearAllButton.Location = new Point(161, 3);
         clearAllButton.Name = "clearAllButton";
-        clearAllButton.Size = new Size(123, 98);
+        clearAllButton.Size = new Size(73, 98);
         clearAllButton.TabIndex = 19;
         clearAllButton.Text = "C";
         clearAllButton.UseVisualStyleBackColor = false;
@@ -340,9 +348,9 @@ partial class CalcUI
         divideButton.Dock = DockStyle.Fill;
         divideButton.Font = new Font("Segoe UI", 24F);
         divideButton.ForeColor = Color.Cyan;
-        divideButton.Location = new Point(390, 3);
+        divideButton.Location = new Point(240, 3);
         divideButton.Name = "divideButton";
-        divideButton.Size = new Size(126, 98);
+        divideButton.Size = new Size(76, 98);
         divideButton.TabIndex = 20;
         divideButton.Text = "/";
         divideButton.UseVisualStyleBackColor = false;
@@ -355,11 +363,12 @@ partial class CalcUI
         label2.ForeColor = Color.DodgerBlue;
         label2.Location = new Point(0, 0);
         label2.Name = "label2";
-        label2.Size = new Size(262, 23);
+        label2.Size = new Size(62, 23);
         label2.TabIndex = 21;
         // 
         // tableLayoutPanel1
         // 
+        tableLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
         tableLayoutPanel1.ColumnCount = 4;
         tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
         tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
@@ -385,8 +394,7 @@ partial class CalcUI
         tableLayoutPanel1.Controls.Add(fiveButton, 1, 2);
         tableLayoutPanel1.Controls.Add(eightButton, 1, 1);
         tableLayoutPanel1.Controls.Add(sevenButton, 0, 1);
-        tableLayoutPanel1.Dock = DockStyle.Bottom;
-        tableLayoutPanel1.Location = new Point(0, 146);
+        tableLayoutPanel1.Location = new Point(0, 153);
         tableLayoutPanel1.Name = "tableLayoutPanel1";
         tableLayoutPanel1.RowCount = 5;
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
@@ -396,25 +404,88 @@ partial class CalcUI
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-        tableLayoutPanel1.Size = new Size(519, 524);
+        tableLayoutPanel1.Size = new Size(319, 524);
         tableLayoutPanel1.TabIndex = 22;
+        // 
+        // menuStrip1
+        // 
+        menuStrip1.BackColor = SystemColors.ActiveCaptionText;
+        menuStrip1.ForeColor = Color.Cyan;
+        menuStrip1.Items.AddRange(new ToolStripItem[] { viewToolStripMenuItem });
+        menuStrip1.Location = new Point(200, 0);
+        menuStrip1.Name = "menuStrip1";
+        menuStrip1.Size = new Size(319, 24);
+        menuStrip1.TabIndex = 23;
+        menuStrip1.Text = "menuStrip1";
+        // 
+        // viewToolStripMenuItem
+        // 
+        viewToolStripMenuItem.BackColor = SystemColors.ActiveCaptionText;
+        viewToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { basicToolStripMenuItem, scientificToolStripMenuItem });
+        viewToolStripMenuItem.ForeColor = Color.Cyan;
+        viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+        viewToolStripMenuItem.Size = new Size(44, 20);
+        viewToolStripMenuItem.Text = "View";
+        // 
+        // basicToolStripMenuItem
+        // 
+        basicToolStripMenuItem.BackColor = SystemColors.ActiveCaptionText;
+        basicToolStripMenuItem.ForeColor = Color.Cyan;
+        basicToolStripMenuItem.Name = "basicToolStripMenuItem";
+        basicToolStripMenuItem.Size = new Size(180, 22);
+        basicToolStripMenuItem.Text = "Basic";
+        basicToolStripMenuItem.Click += BasicToolStripMenuItem_Click;
+        // 
+        // scientificToolStripMenuItem
+        // 
+        scientificToolStripMenuItem.BackColor = SystemColors.ActiveCaptionText;
+        scientificToolStripMenuItem.ForeColor = Color.Cyan;
+        scientificToolStripMenuItem.Name = "scientificToolStripMenuItem";
+        scientificToolStripMenuItem.Size = new Size(180, 22);
+        scientificToolStripMenuItem.Text = "Scientific";
+        scientificToolStripMenuItem.Click += ScientificToolStripMenuItem_Click;
+        // 
+        // basicPanel
+        // 
+        basicPanel.Controls.Add(tableLayoutPanel1);
+        basicPanel.Controls.Add(label2);
+        basicPanel.Controls.Add(label1);
+        basicPanel.Dock = DockStyle.Fill;
+        basicPanel.Location = new Point(200, 24);
+        basicPanel.Name = "basicPanel";
+        basicPanel.Size = new Size(319, 677);
+        basicPanel.TabIndex = 24;
+        // 
+        // scientificPanel
+        // 
+        scientificPanel.Dock = DockStyle.Left;
+        scientificPanel.Location = new Point(0, 0);
+        scientificPanel.Name = "scientificPanel";
+        scientificPanel.Size = new Size(200, 701);
+        scientificPanel.TabIndex = 23;
+        scientificPanel.Visible = false;
         // 
         // CalcUI
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         BackColor = SystemColors.ActiveCaptionText;
-        ClientSize = new Size(519, 670);
-        Controls.Add(tableLayoutPanel1);
-        Controls.Add(label2);
-        Controls.Add(label1);
+        ClientSize = new Size(519, 701);
+        Controls.Add(basicPanel);
+        Controls.Add(menuStrip1);
+        Controls.Add(scientificPanel);
         ForeColor = SystemColors.ControlText;
         KeyPreview = true;
+        MainMenuStrip = menuStrip1;
         Name = "CalcUI";
         Text = "Kush's Calculator Xtreme!!!";
         KeyDown += CalcUI_KeyDown;
         tableLayoutPanel1.ResumeLayout(false);
+        menuStrip1.ResumeLayout(false);
+        menuStrip1.PerformLayout();
+        basicPanel.ResumeLayout(false);
         ResumeLayout(false);
+        PerformLayout();
     }
 
     #endregion
@@ -442,4 +513,10 @@ partial class CalcUI
     private Button divideButton;
     public Label label2;
     private TableLayoutPanel tableLayoutPanel1;
+    private MenuStrip menuStrip1;
+    private ToolStripMenuItem viewToolStripMenuItem;
+    private ToolStripMenuItem basicToolStripMenuItem;
+    private ToolStripMenuItem scientificToolStripMenuItem;
+    private Panel basicPanel;
+    private Panel scientificPanel;
 }
