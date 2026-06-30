@@ -352,9 +352,8 @@ public partial class CalcUI : Form
     {
         if (scientificPanel.Visible == true)
         {
-            this.Width = this.Width - scientificPanel.Width;
             scientificPanel.Visible = false;
-            
+            this.Width = this.Width - scientificPanel.Width;
         }
     }
 
@@ -362,13 +361,102 @@ public partial class CalcUI : Form
     {
         if (scientificPanel.Visible == false)
         {
-            this.Width = this.Width + scientificPanel.Width;
             scientificPanel.Visible = true;
-            
+            this.Width = this.Width + scientificPanel.Width;
         }
     }
 
     private void CalcUI_Load(object sender, EventArgs e)
+    {
+
+    }
+
+    private void ReciprocalButton_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void SquareButton_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void SquareRootButton_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void PowerButton_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void NthRootButton_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void TenPowerXButton_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void LogBaseTenButton_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void EulerPowerXButton_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void NaturalLogButton_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void ExponentButton_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void PiButton_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void EulerButton_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void FactorialButton_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void ModuloButton_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void LayerTwoButton_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void SineButton_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void CosineButton_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void TangentButton_Click(object sender, EventArgs e)
     {
 
     }
