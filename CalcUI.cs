@@ -5,12 +5,10 @@ using System.Configuration;
 namespace CalculatorAppUI;
 
 //GOH: Claude mentioned a couple things:
-// line 219: arg2 parsed twice
 // line 205: ref should be out on result
 // outputUpdater has no test coverage.
 //culture crash; double.Parse/toString -> CultureInfo.InvariantCulture
 //good idea to figure out how to resize font if placeHolder too big for UI.
-//i think logs have to be positive too.
 
 public partial class CalcUI : Form
 {
@@ -30,13 +28,17 @@ public partial class CalcUI : Form
 
     private void NegateButton_Click(object sender, EventArgs e) //negate
     {
-        placeHolder = calc.Negate(double.Parse(placeHolder)).ToString();
-        label1.Text = placeHolder;
-        if (label2.Text.Contains("="))
+        if (placeHolder != "0")
         {
-            label2.Text = "";
+            placeHolder = calc.Negate(double.Parse(placeHolder)).ToString();
+            label1.Text = placeHolder;
+            if (label2.Text.Contains("="))
+            {
+                label2.Text = "";
+            }
+            argumentEntered = true;
         }
-        argumentEntered = true;
+        
     }
 
     private void ZeroButton_Click(object sender, EventArgs e) //0
@@ -143,6 +145,7 @@ public partial class CalcUI : Form
     private void PercentButton_Click(object sender, EventArgs e) //%
     {
         //this thing is NOT a simple divide by 100.
+        //GOH: revisit this and add label2 to each case. additionally can collapse the switch statement.
         if (calcOperator == "")
         {
             placeHolder = calc.Percent(double.Parse(placeHolder)).ToString();
@@ -227,9 +230,10 @@ public partial class CalcUI : Form
                 result = calc.Multiply(double.Parse(arg1), double.Parse(arg2));
                 break;
             case "/":
-                if (double.Parse(arg2) != 0d)
+                double arg2Parsed = double.Parse(arg2);
+                if (arg2Parsed != 0d)
                 {
-                    result = calc.Divide(double.Parse(arg1), double.Parse(arg2));
+                    result = calc.Divide(double.Parse(arg1), arg2Parsed);
                 }
                 else
                 {
@@ -242,10 +246,17 @@ public partial class CalcUI : Form
                 result = calc.Power(double.Parse(arg1), double.Parse(arg2));
                 break;
             case "yroot":
-                if (double.Parse(arg2) != 0d)
+                arg2Parsed = double.Parse(arg2);
+                if (arg2Parsed != 0d)
                 {
-                    result = calc.NthRoot(double.Parse(arg1), double.Parse(arg2));
-                }
+                    result = calc.NthRoot(double.Parse(arg1), arg2Parsed);
+                    if (double.IsNaN(result) || double.IsInfinity(result))
+                    {
+                        OutputUpdater.ClearEverything(this, ref placeHolder, ref arg1, ref arg2, ref calcOperator, ref argumentEntered);
+                        label1.Text = "Invalid Input";
+                        return false;
+                    }
+                } 
                 else
                 {
                     OutputUpdater.ClearEverything(this, ref placeHolder, ref arg1, ref arg2, ref calcOperator, ref argumentEntered);
@@ -260,7 +271,7 @@ public partial class CalcUI : Form
                 result = calc.Modulo(double.Parse(arg1), double.Parse(arg2));
                 break;
             default:
-                break;
+                return false;
         }
         return true;
     }
@@ -424,10 +435,20 @@ public partial class CalcUI : Form
 
     private void SquareRootButton_Click(object sender, EventArgs e)
     {
-        label2.Text = "²√( " + placeHolder + " ) = ";
-        placeHolder = calc.SquareRoot(double.Parse(placeHolder)).ToString();
-        label1.Text = placeHolder;
-        argumentEntered = true;
+        double result = calc.SquareRoot(double.Parse(placeHolder));
+        if (double.IsNaN(result) || double.IsInfinity(result))
+        {
+            OutputUpdater.ClearEverything(this, ref placeHolder, ref arg1, ref arg2, ref calcOperator, ref argumentEntered);
+            label1.Text = "Error: Invalid input";
+        }
+        else
+        {
+            label2.Text = "²√( " + placeHolder + " ) = ";
+            placeHolder = result.ToString();
+            label1.Text = placeHolder;
+            argumentEntered = true;
+        }
+        
     }
 
     private void PowerButton_Click(object sender, EventArgs e)
@@ -451,7 +472,7 @@ public partial class CalcUI : Form
     private void LogBaseTenButton_Click(object sender, EventArgs e)
     {
         double input = double.Parse(placeHolder);
-        if (input < 0)
+        if (input <= 0)
         {
             OutputUpdater.ClearEverything(this, ref placeHolder, ref arg1, ref arg2, ref calcOperator, ref argumentEntered);
             label1.Text = "Error: Invalid input";
@@ -476,7 +497,7 @@ public partial class CalcUI : Form
     private void NaturalLogButton_Click(object sender, EventArgs e)
     {
         double input = double.Parse(placeHolder);
-        if (input < 0)
+        if (input <= 0)
         {
             OutputUpdater.ClearEverything(this, ref placeHolder, ref arg1, ref arg2, ref calcOperator, ref argumentEntered);
             label1.Text = "Error: Invalid input";
@@ -515,7 +536,7 @@ public partial class CalcUI : Form
     {
         double arg1Parsed = double.Parse(placeHolder);
         
-        if (arg1Parsed >= 0 && (arg1Parsed % 1) == 0)
+        if (arg1Parsed >= 0 && arg1Parsed < 170 && (arg1Parsed % 1) == 0) //upper bound needs to be set, number too large = stack overflow
         {
             //positive integer
             label2.Text = placeHolder + "! = ";
@@ -523,7 +544,7 @@ public partial class CalcUI : Form
             label1.Text = placeHolder;
             argumentEntered = true;
         }
-        else if (arg1Parsed % 1 != 0)
+        else if (arg1Parsed < 170 && arg1Parsed % 1 != 0)
         {
             //positive or negative decimal
             label2.Text = placeHolder + "! = ";
