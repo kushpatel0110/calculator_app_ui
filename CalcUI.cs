@@ -1,6 +1,5 @@
 using CalculatorAppUI.Services;
 using CalculatorAppUI.Utils;
-using System.Configuration;
 
 namespace CalculatorAppUI;
 
