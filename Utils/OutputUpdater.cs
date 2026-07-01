@@ -43,5 +43,24 @@ namespace CalculatorAppUI.Utils
             form.label1.Text = "0";
             argumentEntered = false;
         }
+
+        public static void UpdateLayer(CalcUI form, ref bool layerTwo)
+        {
+            if (layerTwo == false)
+            {
+                //we want to enable layer 2
+                form.sineButton.Text = "sin⁻¹";
+                form.cosineButton.Text = "cos⁻¹";
+                form.tangentButton.Text = "tan⁻¹";
+                layerTwo = true;
+            }
+            else
+            {
+                form.sineButton.Text = "sin";
+                form.cosineButton.Text = "cos";
+                form.tangentButton.Text = "tan";
+                layerTwo = false;
+            }
+        }
     }
 }

@@ -4,10 +4,10 @@ using CalculatorAppUI.Utils;
 namespace CalculatorAppUI;
 
 //GOH: Claude mentioned a couple things:
-// line 219: arg2 parsed twice
 // line 205: ref should be out on result
 // outputUpdater has no test coverage.
 //culture crash; double.Parse/toString -> CultureInfo.InvariantCulture
+//good idea to figure out how to resize font if placeHolder too big for UI.
 
 public partial class CalcUI : Form
 {
@@ -18,6 +18,7 @@ public partial class CalcUI : Form
     string arg1 = "";
     string arg2 = "";
     bool argumentEntered = false;
+    bool layerTwo = false;
     public CalcUI()
     {
         InitializeComponent();
@@ -26,13 +27,17 @@ public partial class CalcUI : Form
 
     private void NegateButton_Click(object sender, EventArgs e) //negate
     {
-        placeHolder = calc.Negate(double.Parse(placeHolder)).ToString();
-        label1.Text = placeHolder;
-        if (label2.Text.Contains("="))
+        if (placeHolder != "0")
         {
-            label2.Text = "";
+            placeHolder = calc.Negate(double.Parse(placeHolder)).ToString();
+            label1.Text = placeHolder;
+            if (label2.Text.Contains("="))
+            {
+                label2.Text = "";
+            }
+            argumentEntered = true;
         }
-        argumentEntered = true;
+        
     }
 
     private void ZeroButton_Click(object sender, EventArgs e) //0
@@ -139,6 +144,7 @@ public partial class CalcUI : Form
     private void PercentButton_Click(object sender, EventArgs e) //%
     {
         //this thing is NOT a simple divide by 100.
+        //GOH: revisit this and add label2 to each case. additionally can collapse the switch statement.
         if (calcOperator == "")
         {
             placeHolder = calc.Percent(double.Parse(placeHolder)).ToString();
@@ -223,9 +229,10 @@ public partial class CalcUI : Form
                 result = calc.Multiply(double.Parse(arg1), double.Parse(arg2));
                 break;
             case "/":
-                if (double.Parse(arg2) != 0d)
+                double arg2Parsed = double.Parse(arg2);
+                if (arg2Parsed != 0d)
                 {
-                    result = calc.Divide(double.Parse(arg1), double.Parse(arg2));
+                    result = calc.Divide(double.Parse(arg1), arg2Parsed);
                 }
                 else
                 {
@@ -234,8 +241,36 @@ public partial class CalcUI : Form
                     return false;
                 }
                 break;
-            default:
+            case "^":
+                result = calc.Power(double.Parse(arg1), double.Parse(arg2));
                 break;
+            case "yroot":
+                arg2Parsed = double.Parse(arg2);
+                if (arg2Parsed != 0d)
+                {
+                    result = calc.NthRoot(double.Parse(arg1), arg2Parsed);
+                    if (double.IsNaN(result) || double.IsInfinity(result))
+                    {
+                        OutputUpdater.ClearEverything(this, ref placeHolder, ref arg1, ref arg2, ref calcOperator, ref argumentEntered);
+                        label1.Text = "Invalid Input";
+                        return false;
+                    }
+                } 
+                else
+                {
+                    OutputUpdater.ClearEverything(this, ref placeHolder, ref arg1, ref arg2, ref calcOperator, ref argumentEntered);
+                    label1.Text = "Error: DIV/0";
+                    return false;
+                }
+                break;
+            case "exp":
+                result = calc.Exponent(double.Parse(arg1), double.Parse(arg2));
+                break;
+            case "mod":
+                result = calc.Modulo(double.Parse(arg1), double.Parse(arg2));
+                break;
+            default:
+                return false;
         }
         return true;
     }
@@ -373,91 +408,227 @@ public partial class CalcUI : Form
 
     private void ReciprocalButton_Click(object sender, EventArgs e)
     {
+        double arg1Parsed = double.Parse(placeHolder);
+        if (arg1Parsed != 0)
+        {
+            label2.Text = "1 / " + placeHolder + " = ";
+            placeHolder = calc.Reciprocal(arg1Parsed).ToString();
+            label1.Text = placeHolder;
+            argumentEntered = true;
+        }
+        else
+        {
+            OutputUpdater.ClearEverything(this, ref placeHolder, ref arg1, ref arg2, ref calcOperator, ref argumentEntered);
+            label1.Text = "Error: DIV/0";
+        }
 
     }
 
     private void SquareButton_Click(object sender, EventArgs e)
     {
-
+        label2.Text = placeHolder + " ^ 2 = ";
+        placeHolder = calc.Square(double.Parse(placeHolder)).ToString();
+        label1.Text = placeHolder;
+        argumentEntered = true;
     }
 
     private void SquareRootButton_Click(object sender, EventArgs e)
     {
-
+        double result = calc.SquareRoot(double.Parse(placeHolder));
+        if (double.IsNaN(result) || double.IsInfinity(result))
+        {
+            OutputUpdater.ClearEverything(this, ref placeHolder, ref arg1, ref arg2, ref calcOperator, ref argumentEntered);
+            label1.Text = "Error: Invalid input";
+        }
+        else
+        {
+            label2.Text = "²√( " + placeHolder + " ) = ";
+            placeHolder = result.ToString();
+            label1.Text = placeHolder;
+            argumentEntered = true;
+        }
+        
     }
 
     private void PowerButton_Click(object sender, EventArgs e)
     {
-
+        HandleOperatorPress("^");
     }
 
     private void NthRootButton_Click(object sender, EventArgs e)
     {
-
+        HandleOperatorPress("yroot");
     }
 
     private void TenPowerXButton_Click(object sender, EventArgs e)
     {
-
+        label2.Text = "10 ^ " + placeHolder + " = ";
+        placeHolder = calc.TenPowerX(double.Parse(placeHolder)).ToString();
+        label1.Text = placeHolder;
+        argumentEntered = true;
     }
 
     private void LogBaseTenButton_Click(object sender, EventArgs e)
     {
-
+        double input = double.Parse(placeHolder);
+        if (input <= 0)
+        {
+            OutputUpdater.ClearEverything(this, ref placeHolder, ref arg1, ref arg2, ref calcOperator, ref argumentEntered);
+            label1.Text = "Error: Invalid input";
+        }
+        else
+        {
+            label2.Text = "log ( " + placeHolder + " ) = ";
+            placeHolder = calc.LogBaseTen(double.Parse(placeHolder)).ToString();
+            label1.Text = placeHolder;
+            argumentEntered = true;
+        }
     }
 
     private void EulerPowerXButton_Click(object sender, EventArgs e)
     {
-
+        label2.Text = "e ^ " + placeHolder + " = ";
+        placeHolder = calc.EulerPowerX(double.Parse(placeHolder)).ToString();
+        label1.Text = placeHolder;
+        argumentEntered = true;
     }
 
     private void NaturalLogButton_Click(object sender, EventArgs e)
     {
-
+        double input = double.Parse(placeHolder);
+        if (input <= 0)
+        {
+            OutputUpdater.ClearEverything(this, ref placeHolder, ref arg1, ref arg2, ref calcOperator, ref argumentEntered);
+            label1.Text = "Error: Invalid input";
+        }
+        else
+        {
+            label2.Text = "log_e ( " + placeHolder + " ) = ";
+            placeHolder = calc.NaturalLog(double.Parse(placeHolder)).ToString();
+            label1.Text = placeHolder;
+            argumentEntered = true;
+        }
     }
 
     private void ExponentButton_Click(object sender, EventArgs e)
     {
-
+        HandleOperatorPress("exp");
     }
 
     private void PiButton_Click(object sender, EventArgs e)
     {
-
+        label2.Text = "π = ";
+        placeHolder = calc.Pi().ToString();
+        label1.Text = placeHolder;
+        argumentEntered = true;
     }
 
     private void EulerButton_Click(object sender, EventArgs e)
     {
-
+        label2.Text = "e = ";
+        placeHolder = calc.Euler().ToString();
+        label1.Text = placeHolder;
+        argumentEntered = true;
     }
 
     private void FactorialButton_Click(object sender, EventArgs e)
     {
-
+        double arg1Parsed = double.Parse(placeHolder);
+        
+        if (arg1Parsed >= 0 && arg1Parsed < 170 && (arg1Parsed % 1) == 0) //upper bound needs to be set, number too large = stack overflow
+        {
+            //positive integer
+            label2.Text = placeHolder + "! = ";
+            placeHolder = calc.Factorial(arg1Parsed).ToString();
+            label1.Text = placeHolder;
+            argumentEntered = true;
+        }
+        else if (arg1Parsed < 170 && arg1Parsed % 1 != 0)
+        {
+            //positive or negative decimal
+            label2.Text = placeHolder + "! = ";
+            placeHolder = calc.FactorialGamma(arg1Parsed).ToString();
+            label1.Text = placeHolder;
+            argumentEntered = true;
+        }
+        else
+        {
+            //invalid input
+            OutputUpdater.ClearEverything(this, ref placeHolder, ref arg1, ref arg2, ref calcOperator, ref argumentEntered);
+            label1.Text = "Error: Invalid input";
+        }
+        
     }
 
     private void ModuloButton_Click(object sender, EventArgs e)
     {
-
+        HandleOperatorPress("mod");
     }
 
     private void LayerTwoButton_Click(object sender, EventArgs e)
     {
-
+        OutputUpdater.UpdateLayer(this, ref layerTwo);
     }
 
     private void SineButton_Click(object sender, EventArgs e)
     {
-
+        if (layerTwo == false)
+        {
+            label2.Text = "sin " + placeHolder + " = ";
+            placeHolder = calc.Sine(double.Parse(placeHolder)).ToString();
+        }
+        else
+        {
+            label2.Text = "sin⁻¹ " + placeHolder + " = ";
+            placeHolder = calc.ArcSine(double.Parse(placeHolder)).ToString();
+        }
+        label1.Text = placeHolder;
+        argumentEntered = true;
     }
 
     private void CosineButton_Click(object sender, EventArgs e)
     {
-
+        if (layerTwo == false)
+        {
+            label2.Text = "cos " + placeHolder + " = ";
+            placeHolder = calc.Cosine(double.Parse(placeHolder)).ToString();
+        }
+        else
+        {
+            label2.Text = "cos⁻¹ " + placeHolder + " = ";
+            placeHolder = calc.ArcCosine(double.Parse(placeHolder)).ToString();
+        }
+        
+        label1.Text = placeHolder;
+        argumentEntered = true;
     }
 
     private void TangentButton_Click(object sender, EventArgs e)
     {
+        double angle = double.Parse(placeHolder);
+        if (layerTwo == false)
+        {
+            if (angle % 180 == 90 || angle % 180 == -90) // tan = sin / cos, cant div/0
+            {
+                OutputUpdater.ClearEverything(this, ref placeHolder, ref arg1, ref arg2, ref calcOperator, ref argumentEntered);
+                label1.Text = "Error: Invalid input";
 
+            }
+            else
+            {
+                label2.Text = "tan " + placeHolder + " = ";
+                placeHolder = calc.Tangent(angle).ToString();
+                label1.Text = placeHolder;
+                argumentEntered = true;
+            }
+        }
+        else
+        {
+            label2.Text = "tan⁻¹ " + placeHolder + " = ";
+            placeHolder = calc.ArcTangent(angle).ToString();
+            label1.Text = placeHolder;
+            argumentEntered = true;
+        }
+        
     }
 }

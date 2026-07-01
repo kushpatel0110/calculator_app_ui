@@ -848,7 +848,7 @@ partial class CalcUI
     private Button factorialButton;
     private Button moduloButton;
     private Button layerTwoButton;
-    private Button sineButton;
-    private Button cosineButton;
-    private Button tangentButton;
+    public Button sineButton;
+    public Button cosineButton;
+    public Button tangentButton;
 }
