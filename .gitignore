@@ -417,5 +417,7 @@ FodyWeavers.xsd
 *.msm
 *.msp
 
-# Bin Folder
-bin/
+# Bin Folder and others
+bin/**
+obj/**
+.vs/**
