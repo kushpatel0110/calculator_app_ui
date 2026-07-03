@@ -5,7 +5,7 @@ VisualStudioVersion = 18.2.11415.280
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorAppUI", "CalculatorAppUI.csproj", "{57A83B14-8133-C25E-2261-9A1B72E0EA50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorAppUI.Tests", "..\CalculatorAppUI.Tests\CalculatorAppUI.Tests.csproj", "{FAF0F4E4-769C-47C4-844B-6B80DEA621C3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorAppUI.Tests", "CalculatorAppUI.Tests\CalculatorAppUI.Tests.csproj", "{FAF0F4E4-769C-47C4-844B-6B80DEA621C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

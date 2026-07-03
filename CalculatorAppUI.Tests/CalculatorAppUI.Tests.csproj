@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CalculatorAppUI\CalculatorAppUI.csproj" />
+    <ProjectReference Include="..\CalculatorAppUI.csproj" />
   </ItemGroup>
 
   <ItemGroup>
