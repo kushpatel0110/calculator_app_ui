@@ -40,9 +40,30 @@ public partial class CalcUI : Form
         
     }
 
-    private void ZeroButton_Click(object sender, EventArgs e) //0
+    private void Digit_Click(object sender, EventArgs e)
     {
-        DigitEntered("0");
+        Button btn = (Button)sender;
+        string? tag = (string?)btn.Tag;
+        if (tag != null)
+        {
+            DigitEntered(tag);
+        }
+    }
+
+    private void DigitEntered(string digit)
+    {
+        UpdateCalcText(digit);
+        argumentEntered = true;
+    }
+
+    private void Operator_Click(object sender, EventArgs e)
+    {
+        Button btn = (Button)sender;
+        string? tag = (string?)btn.Tag;
+        if (tag != null)
+        {
+            HandleOperatorPress(tag);
+        }
     }
 
     private void PeriodButton_Click(object sender, EventArgs e) //.
@@ -67,7 +88,7 @@ public partial class CalcUI : Form
         {
             arg2 = placeHolder;
             double result = 0;
-            if (GetResultFromOperation(ref result))
+            if (GetResultFromOperation(out result))
             {
                 placeHolder = result.ToString();
                 label1.Text = result.ToString();
@@ -79,66 +100,6 @@ public partial class CalcUI : Form
             }
         }
 
-    }
-
-    private void OneButton_Click(object sender, EventArgs e) //1
-    {
-        DigitEntered("1");
-    }
-
-    private void TwoButton_Click(object sender, EventArgs e) //2
-    {
-        DigitEntered("2");
-    }
-
-    private void ThreeButton_Click(object sender, EventArgs e) //3
-    {
-        DigitEntered("3");
-    }
-
-    private void PlusButton_Click(object sender, EventArgs e) //+
-    {
-        HandleOperatorPress("+");
-    }
-
-    private void FourButton_Click(object sender, EventArgs e) //4
-    {
-        DigitEntered("4");
-    }
-
-    private void FiveButton_Click(object sender, EventArgs e) //5
-    {
-        DigitEntered("5");
-    }
-
-    private void SixButton_Click(object sender, EventArgs e) //6
-    {
-        DigitEntered("6");
-    }
-
-    private void SubtractButton_Click(object sender, EventArgs e) //-
-    {
-        HandleOperatorPress("-");
-    }
-
-    private void SevenButton_Click(object sender, EventArgs e) //7
-    {
-        DigitEntered("7");
-    }
-
-    private void EightButton_Click(object sender, EventArgs e) //8
-    {
-        DigitEntered("8");
-    }
-
-    private void NineButton_Click(object sender, EventArgs e) //9
-    {
-        DigitEntered("9");
-    }
-
-    private void MultiplyButton_Click(object sender, EventArgs e) //*
-    {
-        HandleOperatorPress("*");
     }
 
     private void PercentButton_Click(object sender, EventArgs e) //%
@@ -182,11 +143,6 @@ public partial class CalcUI : Form
     {
         ClearEverything();
     }
-
-    private void DivideButton_Click(object sender, EventArgs e) //'/'
-    {
-        HandleOperatorPress("/");
-    }
     private void HandleOperatorPress(string newOperator)
     {
         if (calcOperator == "")
@@ -201,7 +157,7 @@ public partial class CalcUI : Form
             argumentEntered = false;
             arg2 = placeHolder;
             double result = 0;
-            if (GetResultFromOperation(ref result))
+            if (GetResultFromOperation(out result))
             {
                 arg1 = result.ToString();
                 placeHolder = "0";
@@ -217,7 +173,7 @@ public partial class CalcUI : Form
         label2.Text = arg1 + " " + calcOperator;
 
     }
-    private bool GetResultFromOperation(ref double result)
+    private bool GetResultFromOperation(out double result)
     {
         double arg1Parsed = double.Parse(arg1, CultureInfo.InvariantCulture);
         double arg2Parsed = double.Parse(arg2, CultureInfo.InvariantCulture);
@@ -239,6 +195,7 @@ public partial class CalcUI : Form
                 }
                 else
                 {
+                    result = 0;
                     ClearEverything();
                     label1.Text = "Error: DIV/0";
                     return false;
@@ -260,6 +217,7 @@ public partial class CalcUI : Form
                 } 
                 else
                 {
+                    result = 0;
                     ClearEverything();
                     label1.Text = "Error: DIV/0";
                     return false;
@@ -272,15 +230,10 @@ public partial class CalcUI : Form
                 result = calc.Modulo(arg1Parsed, arg2Parsed);
                 break;
             default:
+                result = 0;
                 return false;
         }
         return true;
-    }
-
-    private void DigitEntered(string digit)
-    {
-        UpdateCalcText(digit);
-        argumentEntered = true;
     }
     private void CalcUI_KeyDown(object sender, KeyEventArgs e)
     {
@@ -452,16 +405,6 @@ public partial class CalcUI : Form
         
     }
 
-    private void PowerButton_Click(object sender, EventArgs e)
-    {
-        HandleOperatorPress("^");
-    }
-
-    private void NthRootButton_Click(object sender, EventArgs e)
-    {
-        HandleOperatorPress("yroot");
-    }
-
     private void TenPowerXButton_Click(object sender, EventArgs e)
     {
         label2.Text = "10 ^ " + placeHolder + " = ";
@@ -512,11 +455,6 @@ public partial class CalcUI : Form
         }
     }
 
-    private void ExponentButton_Click(object sender, EventArgs e)
-    {
-        HandleOperatorPress("exp");
-    }
-
     private void PiButton_Click(object sender, EventArgs e)
     {
         label2.Text = "π = ";
@@ -560,11 +498,6 @@ public partial class CalcUI : Form
             label1.Text = "Error: Invalid input";
         }
         
-    }
-
-    private void ModuloButton_Click(object sender, EventArgs e)
-    {
-        HandleOperatorPress("mod");
     }
 
     private void LayerTwoButton_Click(object sender, EventArgs e)

@@ -120,9 +120,10 @@ partial class CalcUI
         zeroButton.Name = "zeroButton";
         zeroButton.Size = new Size(90, 102);
         zeroButton.TabIndex = 2;
+        zeroButton.Tag = "0";
         zeroButton.Text = "0";
         zeroButton.UseVisualStyleBackColor = false;
-        zeroButton.Click += ZeroButton_Click;
+        zeroButton.Click += Digit_Click;
         // 
         // periodButton
         // 
@@ -163,9 +164,10 @@ partial class CalcUI
         oneButton.Name = "oneButton";
         oneButton.Size = new Size(90, 98);
         oneButton.TabIndex = 5;
+        oneButton.Tag = "1";
         oneButton.Text = "1";
         oneButton.UseVisualStyleBackColor = false;
-        oneButton.Click += OneButton_Click;
+        oneButton.Click += Digit_Click;
         // 
         // twoButton
         // 
@@ -177,9 +179,10 @@ partial class CalcUI
         twoButton.Name = "twoButton";
         twoButton.Size = new Size(90, 98);
         twoButton.TabIndex = 6;
+        twoButton.Tag = "2";
         twoButton.Text = "2";
         twoButton.UseVisualStyleBackColor = false;
-        twoButton.Click += TwoButton_Click;
+        twoButton.Click += Digit_Click;
         // 
         // threeButton
         // 
@@ -191,9 +194,10 @@ partial class CalcUI
         threeButton.Name = "threeButton";
         threeButton.Size = new Size(90, 98);
         threeButton.TabIndex = 7;
+        threeButton.Tag = "3";
         threeButton.Text = "3";
         threeButton.UseVisualStyleBackColor = false;
-        threeButton.Click += ThreeButton_Click;
+        threeButton.Click += Digit_Click;
         // 
         // plusButton
         // 
@@ -205,9 +209,10 @@ partial class CalcUI
         plusButton.Name = "plusButton";
         plusButton.Size = new Size(92, 98);
         plusButton.TabIndex = 8;
+        plusButton.Tag = "+";
         plusButton.Text = "+";
         plusButton.UseVisualStyleBackColor = false;
-        plusButton.Click += PlusButton_Click;
+        plusButton.Click += Operator_Click;
         // 
         // fourButton
         // 
@@ -219,9 +224,10 @@ partial class CalcUI
         fourButton.Name = "fourButton";
         fourButton.Size = new Size(90, 98);
         fourButton.TabIndex = 9;
+        fourButton.Tag = "4";
         fourButton.Text = "4";
         fourButton.UseVisualStyleBackColor = false;
-        fourButton.Click += FourButton_Click;
+        fourButton.Click += Digit_Click;
         // 
         // fiveButton
         // 
@@ -233,9 +239,10 @@ partial class CalcUI
         fiveButton.Name = "fiveButton";
         fiveButton.Size = new Size(90, 98);
         fiveButton.TabIndex = 10;
+        fiveButton.Tag = "5";
         fiveButton.Text = "5";
         fiveButton.UseVisualStyleBackColor = false;
-        fiveButton.Click += FiveButton_Click;
+        fiveButton.Click += Digit_Click;
         // 
         // sixButton
         // 
@@ -247,9 +254,10 @@ partial class CalcUI
         sixButton.Name = "sixButton";
         sixButton.Size = new Size(90, 98);
         sixButton.TabIndex = 11;
+        sixButton.Tag = "6";
         sixButton.Text = "6";
         sixButton.UseVisualStyleBackColor = false;
-        sixButton.Click += SixButton_Click;
+        sixButton.Click += Digit_Click;
         // 
         // subtractButton
         // 
@@ -261,9 +269,10 @@ partial class CalcUI
         subtractButton.Name = "subtractButton";
         subtractButton.Size = new Size(92, 98);
         subtractButton.TabIndex = 12;
+        subtractButton.Tag = "-";
         subtractButton.Text = "-";
         subtractButton.UseVisualStyleBackColor = false;
-        subtractButton.Click += SubtractButton_Click;
+        subtractButton.Click += Operator_Click;
         // 
         // sevenButton
         // 
@@ -275,9 +284,10 @@ partial class CalcUI
         sevenButton.Name = "sevenButton";
         sevenButton.Size = new Size(90, 98);
         sevenButton.TabIndex = 13;
+        sevenButton.Tag = "7";
         sevenButton.Text = "7";
         sevenButton.UseVisualStyleBackColor = false;
-        sevenButton.Click += SevenButton_Click;
+        sevenButton.Click += Digit_Click;
         // 
         // eightButton
         // 
@@ -289,9 +299,10 @@ partial class CalcUI
         eightButton.Name = "eightButton";
         eightButton.Size = new Size(90, 98);
         eightButton.TabIndex = 14;
+        eightButton.Tag = "8";
         eightButton.Text = "8";
         eightButton.UseVisualStyleBackColor = false;
-        eightButton.Click += EightButton_Click;
+        eightButton.Click += Digit_Click;
         // 
         // nineButton
         // 
@@ -303,9 +314,10 @@ partial class CalcUI
         nineButton.Name = "nineButton";
         nineButton.Size = new Size(90, 98);
         nineButton.TabIndex = 15;
+        nineButton.Tag = "9";
         nineButton.Text = "9";
         nineButton.UseVisualStyleBackColor = false;
-        nineButton.Click += NineButton_Click;
+        nineButton.Click += Digit_Click;
         // 
         // multiplyButton
         // 
@@ -317,9 +329,10 @@ partial class CalcUI
         multiplyButton.Name = "multiplyButton";
         multiplyButton.Size = new Size(92, 98);
         multiplyButton.TabIndex = 16;
+        multiplyButton.Tag = "*";
         multiplyButton.Text = "*";
         multiplyButton.UseVisualStyleBackColor = false;
-        multiplyButton.Click += MultiplyButton_Click;
+        multiplyButton.Click += Operator_Click;
         // 
         // percentButton
         // 
@@ -373,9 +386,10 @@ partial class CalcUI
         divideButton.Name = "divideButton";
         divideButton.Size = new Size(92, 98);
         divideButton.TabIndex = 20;
+        divideButton.Tag = "/";
         divideButton.Text = "/";
         divideButton.UseVisualStyleBackColor = false;
-        divideButton.Click += DivideButton_Click;
+        divideButton.Click += Operator_Click;
         // 
         // label2
         // 
@@ -590,9 +604,10 @@ partial class CalcUI
         moduloButton.Name = "moduloButton";
         moduloButton.Size = new Size(94, 110);
         moduloButton.TabIndex = 31;
+        moduloButton.Tag = "mod";
         moduloButton.Text = "mod";
         moduloButton.UseVisualStyleBackColor = false;
-        moduloButton.Click += ModuloButton_Click;
+        moduloButton.Click += Operator_Click;
         // 
         // factorialButton
         // 
@@ -646,9 +661,10 @@ partial class CalcUI
         exponentButton.Name = "exponentButton";
         exponentButton.Size = new Size(93, 110);
         exponentButton.TabIndex = 27;
+        exponentButton.Tag = "exp";
         exponentButton.Text = "exp";
         exponentButton.UseVisualStyleBackColor = false;
-        exponentButton.Click += ExponentButton_Click;
+        exponentButton.Click += Operator_Click;
         // 
         // naturalLogButton
         // 
@@ -716,9 +732,10 @@ partial class CalcUI
         nthRootButton.Name = "nthRootButton";
         nthRootButton.Size = new Size(94, 110);
         nthRootButton.TabIndex = 22;
+        nthRootButton.Tag = "yroot";
         nthRootButton.Text = "ʸ√𝑥";
         nthRootButton.UseVisualStyleBackColor = false;
-        nthRootButton.Click += NthRootButton_Click;
+        nthRootButton.Click += Operator_Click;
         // 
         // powerButton
         // 
@@ -730,9 +747,10 @@ partial class CalcUI
         powerButton.Name = "powerButton";
         powerButton.Size = new Size(93, 110);
         powerButton.TabIndex = 21;
+        powerButton.Tag = "^";
         powerButton.Text = "𝑥ʸ";
         powerButton.UseVisualStyleBackColor = false;
-        powerButton.Click += PowerButton_Click;
+        powerButton.Click += Operator_Click;
         // 
         // squareRootButton
         // 
