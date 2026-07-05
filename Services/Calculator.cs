@@ -20,7 +20,7 @@ namespace CalculatorAppUI.Services
         }
         public double Negate(double a)
         {
-            return a * -1d;
+            return -a;
         }
         public double Percent(double a)
         {
@@ -135,6 +135,9 @@ namespace CalculatorAppUI.Services
         {
             return a % b;
         }
+
+        //for these trigonomery functions, the inputs are expected
+        //to be in degrees, not radians.
 
         public double Sine(double a)
         {

@@ -8,30 +8,30 @@ namespace CalculatorAppUI
     {
         private void UpdateCalcText(string digit)
         {
-            if (placeHolder == "0")
+            if (currentInput == "0")
             {
                 if (label2.Text.Contains("="))
                 {
                     label2.Text = "";
 
                 }
-                placeHolder = digit;
+                currentInput = digit;
             }
             else if (label2.Text.Contains("=")) //previous result has not been cleared as yet
             {
                 label2.Text = "";
-                placeHolder = digit;
-                label1.Text = placeHolder;
+                currentInput = digit;
+                label1.Text = currentInput;
             }
             else
             {
-                placeHolder = placeHolder + digit;
+                currentInput = currentInput + digit;
             }
-            label1.Text = placeHolder;
+            label1.Text = currentInput;
         }
         private void ClearEverything()
         {
-            placeHolder = "0";
+            currentInput = "0";
             label1.Text = "0";
             label2.Text = "";
             arg1 = "";
@@ -41,7 +41,7 @@ namespace CalculatorAppUI
         }
         private void ClearEntry()
         {
-            placeHolder = "0";
+            currentInput = "0";
             label1.Text = "0";
             argumentEntered = false;
         }
