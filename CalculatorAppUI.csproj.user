@@ -4,5 +4,8 @@
     <Compile Update="CalcUI.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="CalcUI.OutputUpdater.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>
