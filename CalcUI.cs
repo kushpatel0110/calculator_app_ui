@@ -5,9 +5,7 @@ namespace CalculatorAppUI;
 
 //GOH: Claude mentioned a couple things:
 // outputUpdater has no test coverage.
-//culture crash; double.Parse/toString -> CultureInfo.InvariantCulture
 //good idea to figure out how to resize font if currentInput too big for UI.
-//need to revisit % button overall...
 
 public partial class CalcUI : Form
 {
@@ -19,10 +17,77 @@ public partial class CalcUI : Form
     string arg2 = "";
     bool argumentEntered = false;
     bool layerTwo = false;
+    readonly Dictionary<Keys, Button> keyboardMapper;
+    readonly Dictionary<Keys, Button> keyboardMapperShifted;
+
+
     public CalcUI()
     {
         InitializeComponent();
         ActiveControl = equateButton;
+
+        keyboardMapper = new Dictionary<Keys, Button>
+        {
+            { Keys.D0, zeroButton },
+            { Keys.NumPad0, zeroButton },
+            { Keys.D1, oneButton },
+            { Keys.NumPad1, oneButton },
+            { Keys.D2, twoButton },
+            { Keys.NumPad2, twoButton },
+            { Keys.D3, threeButton },
+            { Keys.NumPad3, threeButton },
+            { Keys.D4, fourButton },
+            { Keys.NumPad4, fourButton },
+            { Keys.D5, fiveButton },
+            { Keys.NumPad5, fiveButton },
+            { Keys.D6, sixButton },
+            { Keys.NumPad6, sixButton },
+            { Keys.D7, sevenButton },
+            { Keys.NumPad7, sevenButton },
+            { Keys.D8, eightButton },
+            { Keys.NumPad8, eightButton },
+            { Keys.D9, nineButton },
+            { Keys.NumPad9, nineButton },
+            { Keys.Oemplus, equateButton },
+            { Keys.Add, plusButton },
+            { Keys.OemMinus, subtractButton },
+            { Keys.Subtract, subtractButton },
+            { Keys.Multiply, multiplyButton },
+            { Keys.OemQuestion, divideButton },
+            { Keys.Divide, divideButton },
+            { Keys.OemPeriod, periodButton },
+            { Keys.Decimal, periodButton },
+            { Keys.Enter, equateButton },
+            { Keys.F9, negateButton },
+            { Keys.Delete, clearEntryButton },
+            { Keys.Escape, clearAllButton }
+        };
+        keyboardMapperShifted = new Dictionary<Keys, Button>
+        {
+            { Keys.D5, percentButton },
+            { Keys.NumPad5, percentButton },
+            { Keys.D8, multiplyButton },
+            { Keys.NumPad8, multiplyButton },
+            { Keys.Oemplus, plusButton }
+        };
+    }
+
+    private void CalcUI_KeyDown(object sender, KeyEventArgs e)
+    {
+        e.SuppressKeyPress = true;
+
+        if (keyboardMapper.ContainsKey(e.KeyCode))
+        {
+            if (e.Shift && keyboardMapperShifted.ContainsKey(e.KeyCode))
+            {
+                keyboardMapperShifted[e.KeyCode].PerformClick();
+            }
+            else
+            {
+                keyboardMapper[e.KeyCode].PerformClick();
+            }
+        }
+
     }
 
     private void NegateButton_Click(object sender, EventArgs e)
@@ -122,9 +187,9 @@ public partial class CalcUI : Form
 
     private void PercentButton_Click(object sender, EventArgs e) //%
     {
-        //this thing is NOT a simple divide by 100.
-        //GOH: revisit this and add label2 to each case. additionally can collapse the switch statement.
         double currentInputParsed = double.Parse(currentInput, CultureInfo.InvariantCulture);
+        string displayText = arg1 + " " + calcOperator + " " + currentInput + "%";
+        label2.Text = displayText;
         if (calcOperator == "")
         {
             currentInput = calc.Percent(currentInputParsed).ToString();
@@ -135,15 +200,15 @@ public partial class CalcUI : Form
             switch (calcOperator)
             {
                 case "+":
-                    currentInput = calc.PercentageOf(arg1Parsed, currentInputParsed).ToString();
-                    break;
+                    //ex: 80 + 10% = 88
                 case "-":
+                    //ex: 80 - 10% = 72
                     currentInput = calc.PercentageOf(arg1Parsed, currentInputParsed).ToString();
                     break;
                 case "*":
-                    currentInput = calc.Percent(currentInputParsed).ToString();
-                    break;
+                    //ex: 100 * 5% = 5
                 case "/":
+                    //ex: 100 / 5% = 2000
                     currentInput = calc.Percent(currentInputParsed).ToString();
                     break;
                 default: break;
@@ -221,6 +286,12 @@ public partial class CalcUI : Form
                 break;
             case "^":
                 result = calc.Power(arg1Parsed, arg2Parsed);
+                if (double.IsNaN(result) || double.IsInfinity(result))
+                {
+                    ClearEverything();
+                    label1.Text = "Invalid Input";
+                    return false;
+                }
                 break;
             case "yroot":
                 if (arg2Parsed != 0d)
@@ -253,108 +324,7 @@ public partial class CalcUI : Form
         }
         return true;
     }
-    private void CalcUI_KeyDown(object sender, KeyEventArgs e)
-    {
-        e.SuppressKeyPress = true;
-        switch (e.KeyCode)
-        {
-            case Keys.D0:
-            case Keys.NumPad0:
-                zeroButton.PerformClick();
-                break;
-            case Keys.D1:
-            case Keys.NumPad1:
-                oneButton.PerformClick();
-                break;
-            case Keys.D2:
-            case Keys.NumPad2:
-                twoButton.PerformClick();
-                break;
-            case Keys.D3:
-            case Keys.NumPad3:
-                threeButton.PerformClick();
-                break;
-            case Keys.D4:
-            case Keys.NumPad4:
-                fourButton.PerformClick();
-                break;
-            case Keys.D5:
-            case Keys.NumPad5:
-                if (e.Shift)
-                {
-                    percentButton.PerformClick();
-                }
-                else
-                {
-                    fiveButton.PerformClick();
-                }
-                break;
-            case Keys.D6:
-            case Keys.NumPad6:
-                sixButton.PerformClick();
-                break;
-            case Keys.D7:
-            case Keys.NumPad7:
-                sevenButton.PerformClick();
-                break;
-            case Keys.D8:
-            case Keys.NumPad8:
-                if (e.Shift)
-                {
-                    multiplyButton.PerformClick();
-                }
-                else
-                {
-                    eightButton.PerformClick();
-                }
-                break;
-            case Keys.D9:
-            case Keys.NumPad9:
-                nineButton.PerformClick();
-                break;
-            case Keys.OemQuestion:
-            case Keys.Divide:
-                divideButton.PerformClick();
-                break;
-            case Keys.Oemplus:
-                if (e.Shift)
-                {
-                    plusButton.PerformClick();
-                }
-                else
-                {
-                    equateButton.PerformClick();
-                }
-                break;
-            case Keys.Add:
-                plusButton.PerformClick();
-                break;
-            case Keys.OemMinus:
-            case Keys.Subtract:
-                subtractButton.PerformClick();
-                break;
-            case Keys.Multiply:
-                multiplyButton.PerformClick();
-                break;
-            case Keys.OemPeriod:
-            case Keys.Decimal:
-                periodButton.PerformClick();
-                break;
-            case Keys.Enter:
-                equateButton.PerformClick();
-                break;
-            case Keys.F9:
-                negateButton.PerformClick();
-                break;
-            case Keys.Delete:
-                clearEntryButton.PerformClick();
-                break;
-            case Keys.Escape:
-                clearAllButton.PerformClick();
-                break;
-
-        }
-    }
+    
 
     private void BasicToolStripMenuItem_Click(object sender, EventArgs e)
     {

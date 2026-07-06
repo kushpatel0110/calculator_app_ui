@@ -44,10 +44,13 @@ namespace CalculatorAppUI.Services
         }
         public double Power(double a, double b)
         {
+            //there are some issues with this regarding negative/decimal/complex numbers
+            //not fixing this in this iteration.
             return Math.Pow(a, b);
         }
         public double NthRoot(double a, double b)
         {
+            //same here, for the same reasons.
             return Math.Pow(a, 1.0 / b);
         }
         public double TenPowerX(double a)
@@ -68,6 +71,7 @@ namespace CalculatorAppUI.Services
         }
         public double Exponent(double a, double b)
         {
+            //this application allows decimals for b, windows calc does not.
             return a * Math.Pow(10, b);
         }
         public double Pi()
